@@ -1,0 +1,30 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head >
+  <title>Title</title>
+</head>
+<body>
+<h1>List employee</h1>
+<button><a th:href="@{/employees/create}">Create new employee</a></button>
+<table border="1",id="employee">
+  <tr>
+    <th>STT</th>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Salary</th>
+    <th>Address</th>
+    <th colspan="2">Action</th>
+  </tr>
+  <tr th:each="e , iterStatus : ${employees}">
+    <td th:text = "${iterStatus.count}"></td>
+    <td th:text = "${e.getName}"></td>
+    <td th:text = "${e.getAge}"></td>
+    <td th:text = "${e.getSalary}"></td>
+    <td th:text = "${e.getAddress}"></td>
+    <td><button><a th:href="@{/employees/{id}/update(id=${e.getId()})}">Update</a></button></td>
+    <td><button><a th:href="@{/employees/{id}/delete(id=${e.getId()})}">Delete</a></button></td>
+  </tr>
+</table>
+
+</body>
+</html>
